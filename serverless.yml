@@ -20,7 +20,8 @@ custom:
   webpack:
     webpackConfig: ./webpack.config.js
     includeModules: true
-
+  environment: ${file(env.yml):${self:custom.stage}, file(env.yml):default}
+    stripeSecretKey: ${self:custom.environment.stripeSecretKey}
 provider:
   name: aws
   runtime: nodejs8.10
